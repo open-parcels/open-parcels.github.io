@@ -33,7 +33,12 @@
 
     <main id="main">
       <section class="hero">
-        <h1 class="title"><img class="banner" src="img/banner.svg" alt="Open Parcels" width="1280" height="320" /></h1>
+        <h1 class="title">
+          <picture>
+            <source srcset="img/banner-on-light.svg" media="(prefers-color-scheme: light)" />
+            <img class="banner" src="img/banner-on-dark.svg" alt="Open Parcels" width="1280" height="320" />
+          </picture>
+        </h1>
         <p class="lead">
           Self-hosted parcel and order tracking. One backend for every carrier, shop and mailbox,
           on your own hardware, with a Home Assistant integration built in.
