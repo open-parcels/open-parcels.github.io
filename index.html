@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Open Parcels: self-hosted parcel tracking</title>
+    <meta
+      name="description"
+      content="Open Parcels is a self-hosted parcel tracking service for Docker, Unraid and Home Assistant: about 90 carriers, shipping-mail parsing, a live courier map and a delivery calendar."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <nav class="panel nav" aria-label="Main">
+        <a class="brand" href="#">Open Parcels</a>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#carriers">Carriers</a></li>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#repos">Repositories</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <h1 class="title">Open Parcels</h1>
+        <p class="lead">
+          Self-hosted parcel and order tracking. One backend for every carrier, shop and mailbox,
+          on your own hardware, with a Home Assistant integration built in.
+        </p>
+        <p class="actions">
+          <a class="btn primary" href="#install">Get started</a>
+          <a class="btn" href="https://github.com/open-parcels/open-parcels">View on GitHub</a>
+        </p>
+        <p class="badge">Early development · 2.0.0-dev</p>
+      </section>
+
+      <section id="features" aria-labelledby="features-h">
+        <h2 id="features-h">Features</h2>
+        <div class="grid">
+          <article class="panel card">
+            <h3>About 90 carriers</h3>
+            <p>Tracking-number detection, carrier status tables and tracking links from the shared rules package. Sign in to carrier and shop accounts to pick up parcels automatically.</p>
+          </article>
+          <article class="panel card">
+            <h3>Shipping-mail parsing</h3>
+            <p>Watches your mailbox over IMAP IDLE and recognises shipping and order mails with community-maintained rules.</p>
+          </article>
+          <article class="panel card">
+            <h3>Live courier map</h3>
+            <p>Follows the courier on a map while a carrier offers live tracking. Positions are never stored as a trail.</p>
+          </article>
+          <article class="panel card">
+            <h3>Delivery calendar</h3>
+            <p>Expected deliveries in a calendar view and as an ICS feed for any calendar app.</p>
+          </article>
+          <article class="panel card">
+            <h3>Home Assistant</h3>
+            <p>A custom integration with one device per carrier account, shop or mailbox, an entity per parcel, events, device triggers and services.</p>
+          </article>
+          <article class="panel card">
+            <h3>Runs anywhere</h3>
+            <p>One small multi-arch image (amd64, arm64) for Docker, Unraid and a Home Assistant app on a Raspberry Pi. Read-only root, non-root user.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="carriers" aria-labelledby="carriers-h">
+        <h2 id="carriers-h">Supported carriers (<span id="carrier-count">95</span>)</h2>
+        <p class="muted">
+          Generated from
+          <a href="https://github.com/open-parcels/open-parcels-rules/blob/main/data/carriers.yaml">open-parcels-rules/data/carriers.yaml</a>.
+          Recognising a carrier's tracking numbers does not always mean a live lookup; see the
+          server's plug-ins for which carriers it can query.
+        </p>
+        <!-- carriers:start -->
+        <ul class="carriers">
+          <li><span>4PX</span><small>international</small></li>
+          <li><span>ACS Courier</span><small>GR, CY</small></li>
+          <li><span>Airmee</span><small>SE</small></li>
+          <li><span>Amazon Logistics</span><small>international</small></li>
+          <li><span>Amazon Shipping</span><small>GB, FR, IT, ES, US</small></li>
+          <li><span>Ampère</span><small>NL</small></li>
+          <li><span>An Post</span><small>IE</small></li>
+          <li><span>Apple Express</span><small>CA</small></li>
+          <li><span>Aramex</span><small>AU, NZ</small></li>
+          <li><span>Australia Post</span><small>AU</small></li>
+          <li><span>Better Trucks</span><small>US</small></li>
+          <li><span>BOX NOW</span><small>GR, BG, HR, CY</small></li>
+          <li><span>bpost</span><small>BE</small></li>
+          <li><span>BRT</span><small>IT</small></li>
+          <li><span>Budbee</span><small>SE, NL, BE, DK, FI</small></li>
+          <li><span>Cainiao</span><small>international</small></li>
+          <li><span>Canada Post</span><small>CA</small></li>
+          <li><span>Canpar</span><small>CA</small></li>
+          <li><span>Cargus</span><small>RO</small></li>
+          <li><span>CDL Last Mile</span><small>US</small></li>
+          <li><span>Česká pošta</span><small>CZ</small></li>
+          <li><span>China Post</span><small>CN</small></li>
+          <li><span>Colis Privé</span><small>FR, BE, NL</small></li>
+          <li><span>Colisweb</span><small>FR</small></li>
+          <li><span>Correos</span><small>ES</small></li>
+          <li><span>CTT</span><small>PT, ES</small></li>
+          <li><span>DAO</span><small>DK</small></li>
+          <li><span>Delhivery</span><small>IN</small></li>
+          <li><span>DHL</span><small>DE</small></li>
+          <li><span>DPD</span><small>DE, AT, PL, GB, NL, BE, FR</small></li>
+          <li><span>Dragonfly</span><small>NL, AU, CA</small></li>
+          <li><span>Dynalogic</span><small>NL, BE</small></li>
+          <li><span>Early Bird</span><small>SE</small></li>
+          <li><span>Econt</span><small>BG</small></li>
+          <li><span>Ecoscooting</span><small>ES</small></li>
+          <li><span>ELTA Courier</span><small>GR</small></li>
+          <li><span>Evri</span><small>GB</small></li>
+          <li><span>FAN Courier</span><small>RO</small></li>
+          <li><span>FedEx</span><small>international</small></li>
+          <li><span>Geniki Taxydromiki</span><small>GR, CY</small></li>
+          <li><span>GLS</span><small>DE, AT, NL, PL, ES, IT, FR, DK, BE</small></li>
+          <li><span>GoBolt</span><small>CA</small></li>
+          <li><span>GOFO Express</span><small>US</small></li>
+          <li><span>Helthjem</span><small>NO</small></li>
+          <li><span>Hermes</span><small>DE, AT</small></li>
+          <li><span>Hrvatska pošta</span><small>HR</small></li>
+          <li><span>ICS Courier</span><small>CA</small></li>
+          <li><span>InPost</span><small>PL</small></li>
+          <li><span>La Poste</span><small>FR</small></li>
+          <li><span>Landmark Global</span><small>international</small></li>
+          <li><span>LaserShip</span><small>US</small></li>
+          <li><span>Magyar Posta</span><small>HU</small></li>
+          <li><span>Matkahuolto</span><small>FI</small></li>
+          <li><span>Mondial Relay</span><small>FR, BE, NL, ES, PT, LU</small></li>
+          <li><span>Nova Post</span><small>UA, MD, PL, DE, CZ, SK, RO, LT, LV, EE, IT, ES, FR, GB</small></li>
+          <li><span>NZ Post</span><small>NZ</small></li>
+          <li><span>Old Dominion Freight Line</span><small>US</small></li>
+          <li><span>OnTrac</span><small>US</small></li>
+          <li><span>ORLEN Paczka</span><small>PL</small></li>
+          <li><span>Österreichische Post</span><small>AT</small></li>
+          <li><span>Paack</span><small>ES, PT, FR, IT</small></li>
+          <li><span>Packeta</span><small>CZ, SK, HU, RO, PL, DE, AT</small></li>
+          <li><span>PDN Express</span><small>international</small></li>
+          <li><span>Planzer</span><small>CH, LI</small></li>
+          <li><span>Poczta Polska</span><small>PL</small></li>
+          <li><span>Pošta Slovenije</span><small>SI</small></li>
+          <li><span>Pošta Srbije</span><small>RS</small></li>
+          <li><span>Poste Italiane</span><small>IT</small></li>
+          <li><span>Posten / Bring</span><small>NO</small></li>
+          <li><span>Posti</span><small>FI</small></li>
+          <li><span>PostNL</span><small>NL</small></li>
+          <li><span>PostNord</span><small>DK, SE, NO, FI</small></li>
+          <li><span>PPL CZ</span><small>CZ</small></li>
+          <li><span>Purolator</span><small>CA</small></li>
+          <li><span>Quickpac</span><small>CH</small></li>
+          <li><span>Royal Mail</span><small>GB</small></li>
+          <li><span>Sameday</span><small>RO, HU, BG</small></li>
+          <li><span>SEUR</span><small>ES</small></li>
+          <li><span>Shopee Xpress</span><small>BR, ID, MY, PH, TH, VN</small></li>
+          <li><span>Slovak Parcel Service</span><small>SK</small></li>
+          <li><span>Slovenská pošta</span><small>SK</small></li>
+          <li><span>Spee-Dee Delivery</span><small>US</small></li>
+          <li><span>SpeedX</span><small>US</small></li>
+          <li><span>Straightship</span><small>US</small></li>
+          <li><span>SunYou</span><small>international</small></li>
+          <li><span>Swiss Post</span><small>CH, LI</small></li>
+          <li><span>TIPSA</span><small>ES, PT, AD</small></li>
+          <li><span>Trunkrs</span><small>NL, BE</small></li>
+          <li><span>Ukrposhta</span><small>UA</small></li>
+          <li><span>UniUni</span><small>CA, US</small></li>
+          <li><span>UPS</span><small>international</small></li>
+          <li><span>USPS</span><small>US</small></li>
+          <li><span>Vinted Go</span><small>NL, BE, FR</small></li>
+          <li><span>Yodel</span><small>GB</small></li>
+          <li><span>YunExpress</span><small>international</small></li>
+        </ul>
+        <!-- carriers:end -->
+      </section>
+
+      <section id="install" aria-labelledby="install-h">
+        <h2 id="install-h">Install</h2>
+        <div class="grid two">
+          <article class="panel card">
+            <h3>Docker Compose</h3>
+            <pre><code>services:
+  open-parcels:
+    image: bluscream1/open-parcels:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - open-parcels-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  open-parcels-data:</code></pre>
+            <ol>
+              <li>Run <code>docker compose up -d</code>.</li>
+              <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
+              <li>Open <code>http://localhost:3000</code>, enter the code and set the owner password.</li>
+            </ol>
+          </article>
+          <article class="panel card">
+            <h3>Unraid</h3>
+            <ol>
+              <li>
+                Save the
+                <a href="https://raw.githubusercontent.com/open-parcels/open-parcels/master/unraid/open-parcels.xml">Unraid template</a>
+                to <code>/boot/config/plugins/dockerMan/templates-user/</code>.
+              </li>
+              <li>Docker → Add container → pick <strong>open-parcels</strong>, check the port and the <code>/data</code> path, Apply.</li>
+              <li>The data folder must be writable for uid 1000 (<code>chown 1000:1000</code>), or add <code>--user 99:100</code> to Extra Parameters.</li>
+              <li>Read the setup code from the container log and open the web UI.</li>
+            </ol>
+          </article>
+          <article class="panel card">
+            <h3>Home Assistant app</h3>
+            <p>
+              The Home Assistant app runs the same image with ingress and announces itself to the
+              integration. It is not published yet. Until it is, run the container on Docker or
+              Unraid and point the integration at it.
+            </p>
+          </article>
+          <article class="panel card">
+            <h3>Home Assistant integration (HACS)</h3>
+            <ol>
+              <li>HACS → ⋮ → Custom repositories → add <code>https://github.com/open-parcels/open-parcels-ha</code> as an <em>Integration</em>.</li>
+              <li>Install <strong>Open Parcels</strong> and restart Home Assistant.</li>
+              <li>In the Open Parcels web UI, create an API token with the scopes <code>read</code> and <code>write</code>.</li>
+              <li>Settings → Devices &amp; services → Add integration → Open Parcels, enter the server URL and the token.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="repos" aria-labelledby="repos-h">
+        <h2 id="repos-h">Repositories</h2>
+        <div class="grid">
+          <a class="panel card link" href="https://github.com/open-parcels/open-parcels">
+            <h3>open-parcels</h3>
+            <p>The server and web UI: carrier plug-ins, mail parsing, scheduler, event stream, Docker image and Unraid template.</p>
+          </a>
+          <a class="panel card link" href="https://github.com/open-parcels/open-parcels-rules">
+            <h3>open-parcels-rules</h3>
+            <p>Shared knowledge: tracking-number formats, carrier status tables, delivery-date phrases and shipping-mail rules, with a TypeScript engine.</p>
+          </a>
+          <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha">
+            <h3>open-parcels-ha</h3>
+            <p>The Home Assistant integration: a device per source, an entity per parcel, live updates over the event stream.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="panel foot">
+      <p>
+        <strong>Disclaimer:</strong> Open Parcels is not affiliated with any carrier or shop.
+        Most carrier interfaces it uses are unofficial and can change or stop working at any time.
+        Use your own accounts and follow each service's terms.
+      </p>
+      <p class="muted">Open Parcels · <a href="https://github.com/open-parcels">github.com/open-parcels</a></p>
+    </footer>
+  </body>
+</html>
