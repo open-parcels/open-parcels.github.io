@@ -277,3 +277,16 @@ pre {
   margin: 2rem auto;
   padding: 1rem 1.4rem;
 }
+
+/* Public project numbers (shields.io badges), under the hero. */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 1rem 0 0;
+}
+
+.stats img {
+  display: block;
+}
