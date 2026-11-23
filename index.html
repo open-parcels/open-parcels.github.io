@@ -205,12 +205,15 @@
             <h3>Docker Compose</h3>
             <pre><code>services:
   open-parcels:
-    image: bluscream1/open-parcels:latest
+    image: bluscream1/open-parcels:dev
     restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
       - open-parcels-data:/data
+    environment:
+      # Without a reader password anyone who can reach port 3000 can read everything.
+      OPENPARCELS_PASSWORD: change-me-reader
     read_only: true
     tmpfs:
       - /tmp
@@ -224,7 +227,8 @@ volumes:
             <ol>
               <li>Run <code>docker compose up -d</code>.</li>
               <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
-              <li>Open <code>http://localhost:3000</code>, enter the code and set the owner password.</li>
+              <li>Open <code>http://localhost:3000</code>, enter the code and choose the admin password. Set a reader password too (<code>OPENPARCELS_PASSWORD</code>, or Settings → Security): without one, anyone who can reach the server can read every parcel and order.</li>
+              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released).</li>
             </ol>
           </article>
           <article class="panel card">
@@ -232,21 +236,30 @@ volumes:
             <ol>
               <li>
                 Save the
-                <a href="https://raw.githubusercontent.com/open-parcels/open-parcels/master/unraid/open-parcels.xml">Unraid template</a>
+                <a href="https://raw.githubusercontent.com/open-parcels/open-parcels/main/unraid/open-parcels.xml">Unraid template</a>
                 to <code>/boot/config/plugins/dockerMan/templates-user/</code>.
               </li>
               <li>Docker → Add container → pick <strong>open-parcels</strong>, check the port and the <code>/data</code> path, Apply.</li>
-              <li>The data folder must be writable for uid 1000 (<code>chown 1000:1000</code>), or add <code>--user 99:100</code> to Extra Parameters.</li>
+              <li>The data folder must be writable for uid 1000 (<code>chown 1000:1000</code>), or append <code>--user 99:100</code> to the existing Extra Parameters (keep the flags that are already there).</li>
               <li>Read the setup code from the container log and open the web UI.</li>
             </ol>
           </article>
           <article class="panel card">
             <h3>Home Assistant app</h3>
             <p>
-              The Home Assistant app runs the same image with ingress and announces itself to the
-              integration. It is not published yet. Until it is, run the container on Docker or
-              Unraid and point the integration at it.
+              Runs the server inside Home Assistant, opened from the sidebar. The app builds Open
+              Parcels on your Home Assistant host, so the first installation takes a while (about
+              15 minutes on a Raspberry Pi).
             </p>
+            <ol>
+              <li>
+                <a href="https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fopen-parcels%2Fopen-parcels-ha-apps">Add the app repository to Home Assistant</a>,
+                or Settings → Apps → App store → ⋮ → Repositories → add
+                <code>https://github.com/open-parcels/open-parcels-ha-apps</code>.
+              </li>
+              <li>Install <strong>Open Parcels</strong>, start it and open it from the sidebar.</li>
+              <li>Add the integration below; Home Assistant reaches the app without opening port 3000.</li>
+            </ol>
           </article>
           <article class="panel card">
             <h3>Home Assistant integration (HACS)</h3>
@@ -274,6 +287,14 @@ volumes:
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha">
             <h3>open-parcels-ha</h3>
             <p>The Home Assistant integration: a device per source, an entity per parcel, live updates over the event stream.</p>
+          </a>
+          <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha-apps">
+            <h3>open-parcels-ha-apps</h3>
+            <p>The Home Assistant app (add-on): runs the server and web UI inside Home Assistant.</p>
+          </a>
+          <a class="panel card link" href="https://github.com/open-parcels/open-parcels-extension">
+            <h3>open-parcels-extension</h3>
+            <p>The browser extension for carrier sign-ins that end on an app address the web UI cannot catch itself.</p>
           </a>
         </div>
       </section>
