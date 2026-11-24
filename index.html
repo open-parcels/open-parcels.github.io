@@ -6,16 +6,30 @@
     <title>Open Parcels: self-hosted parcel tracking</title>
     <meta
       name="description"
-      content="Open Parcels is a self-hosted parcel tracking service for Docker, Unraid and Home Assistant: about 95 carriers, shipping-mail parsing, a live courier map and a delivery calendar."
+      content="Open Parcels is a self-hosted parcel tracking service for Docker, Unraid and Home Assistant: about 95 carriers, shipping-email parsing, a live courier map and a delivery calendar."
     />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; img-src 'self' https://img.shields.io; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="canonical" href="https://open-parcels.github.io/" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#eef2f9" media="(prefers-color-scheme: light)" />
     <meta name="color-scheme" content="dark light" />
     <!-- The site has its own dark theme; stop Dark Reader from repainting it. -->
-    <meta name="darkreader-lock" />
+    <meta name="darkreader-lock" content="" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Open Parcels" />
+    <meta property="og:url" content="https://open-parcels.github.io/" />
     <meta property="og:title" content="Open Parcels" />
-    <meta property="og:description" content="Self-hosted parcel and order tracking: every carrier, shop and mailbox in one place." />
+    <meta property="og:description" content="Self-hosted parcel and order tracking: every carrier, shop and inbox in one place." />
     <meta property="og:image" content="https://open-parcels.github.io/img/social-preview.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="Open Parcels logo and name" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -42,7 +56,7 @@
           </picture>
         </h1>
         <p class="lead">
-          Self-hosted parcel and order tracking. One backend for every carrier, shop and mailbox,
+          Self-hosted parcel and order tracking. One backend for every carrier, shop and inbox,
           on your own hardware, with a Home Assistant integration built in.
         </p>
         <p class="actions">
@@ -50,12 +64,12 @@
           <a class="btn" href="https://github.com/open-parcels/open-parcels">View on GitHub</a>
         </p>
         <p class="badge">Early development · 2.0.0-dev</p>
-        <p class="stats" aria-label="Project numbers">
-          <a href="https://hub.docker.com/r/bluscream1/open-parcels"><img alt="Docker Hub pulls" src="https://img.shields.io/docker/pulls/bluscream1/open-parcels?logo=docker&amp;label=pulls" height="20" /></a>
-          <a href="https://github.com/open-parcels/open-parcels/stargazers"><img alt="Server stars" src="https://img.shields.io/github/stars/open-parcels/open-parcels?label=stars&amp;style=flat" height="20" /></a>
-          <a href="https://github.com/open-parcels/open-parcels-ha"><img alt="Home Assistant integration stars" src="https://img.shields.io/github/stars/open-parcels/open-parcels-ha?label=HA%20integration&amp;style=flat" height="20" /></a>
-          <a href="https://github.com/open-parcels/open-parcels-extension/releases"><img alt="Extension downloads" src="https://img.shields.io/github/downloads/open-parcels/open-parcels-extension/total?label=extension%20downloads" height="20" /></a>
-          <a href="https://github.com/open-parcels/open-parcels/issues"><img alt="Open issues" src="https://img.shields.io/github/issues/open-parcels/open-parcels" height="20" /></a>
+        <p class="stats">
+          <a href="https://hub.docker.com/r/bluscream1/open-parcels"><img alt="Docker Hub pulls" src="https://img.shields.io/docker/pulls/bluscream1/open-parcels?logo=docker&amp;label=pulls" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
+          <a href="https://github.com/open-parcels/open-parcels/stargazers"><img alt="Server stars" src="https://img.shields.io/github/stars/open-parcels/open-parcels?label=stars&amp;style=flat" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
+          <a href="https://github.com/open-parcels/open-parcels-ha"><img alt="Home Assistant integration stars" src="https://img.shields.io/github/stars/open-parcels/open-parcels-ha?label=HA%20integration&amp;style=flat" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
+          <a href="https://github.com/open-parcels/open-parcels-extension/releases"><img alt="Extension downloads" src="https://img.shields.io/github/downloads/open-parcels/open-parcels-extension/total?label=extension%20downloads" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
+          <a href="https://github.com/open-parcels/open-parcels/issues"><img alt="Open issues" src="https://img.shields.io/github/issues/open-parcels/open-parcels" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
         </p>
       </section>
 
@@ -64,11 +78,11 @@
         <div class="grid">
           <article class="panel card">
             <h3>About 95 carriers</h3>
-            <p>Tracking-number detection, carrier status tables and tracking links from the shared rules package. Sign in to carrier and shop accounts to pick up parcels automatically.</p>
+            <p>Tracking-number detection, carrier status tables and tracking links from the shared rules package. For carriers with a provider, sign in to your carrier and shop accounts to pick up parcels automatically.</p>
           </article>
           <article class="panel card">
-            <h3>Shipping-mail parsing</h3>
-            <p>Watches your mailbox over IMAP IDLE and recognises shipping and order mails with community-maintained rules.</p>
+            <h3>Shipping emails</h3>
+            <p>Watches your inbox over IMAP IDLE and recognises shipping and order emails with community-maintained rules.</p>
           </article>
           <article class="panel card">
             <h3>Live courier map</h3>
@@ -80,15 +94,15 @@
           </article>
           <article class="panel card">
             <h3>Home Assistant</h3>
-            <p>A custom integration with one device per carrier account, shop or mailbox, an entity per parcel, events, device triggers and services.</p>
+            <p>A custom integration with one device per connection (carrier account, shop or inbox), an entity per parcel, events, device triggers and services.</p>
           </article>
           <article class="panel card">
             <h3>Returns</h3>
-            <p>Returns you start are tracked from the shop's page and its mails: the return-by date, where you can drop the parcel off, whether it is free or costs money, the label and the refund, with a "Return by" calendar entry.</p>
+            <p>Returns you start are tracked from the shop's page and its emails: the return-by date, the pickup points where you can drop the parcel off, whether it is free or costs money, the label and the refund, with a "Return by" calendar entry.</p>
           </article>
           <article class="panel card">
             <h3>Your data stays yours</h3>
-            <p>Nothing is deleted on its own. The Data page shows what is stored and lets you clear a source, old or archived parcels, caches, or everything (with a backup first). Disabled sources hide their parcels until you enable them again.</p>
+            <p>Nothing is deleted on its own. The Data page shows what is stored and lets you clear a connection, old or archived parcels, caches, or everything (with a backup first). Disabled connections hide their parcels until you enable them again.</p>
           </article>
           <article class="panel card">
             <h3>Private by default</h3>
@@ -111,7 +125,8 @@
           Generated from
           <a href="https://github.com/open-parcels/open-parcels-rules/blob/main/data/carriers.yaml">open-parcels-rules/data/carriers.yaml</a>.
           Recognising a carrier's tracking numbers does not always mean a live lookup; see the
-          server's plug-ins for which carriers it can query.
+          <a href="https://github.com/open-parcels/open-parcels/tree/main/server/src/carriers">server's carrier providers</a>
+          for which carriers it can query.
         </p>
         <!-- carriers:start -->
         <ul class="carriers">
@@ -244,7 +259,7 @@ volumes:
               <li>Run <code>docker compose up -d</code>.</li>
               <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
               <li>Open <code>http://localhost:3000</code>, enter the code and choose the admin password. Set a reader password too (<code>OPENPARCELS_PASSWORD</code>, or Settings → Security): without one, anyone who can reach the server can read every parcel and order.</li>
-              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released).</li>
+              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released). The same image is on GitHub's registry as <code>ghcr.io/bluscream/open-parcels:dev</code>.</li>
             </ol>
           </article>
           <article class="panel card">
@@ -263,9 +278,8 @@ volumes:
           <article class="panel card">
             <h3>Home Assistant app</h3>
             <p>
-              Runs the server inside Home Assistant, opened from the sidebar. The app builds Open
-              Parcels on your Home Assistant host, so the first installation takes a while (about
-              15 minutes on a Raspberry Pi).
+              Runs the server inside Home Assistant, opened from the sidebar. Home Assistant
+              downloads a prebuilt image (amd64 and aarch64), so installing takes seconds.
             </p>
             <ol>
               <li>
@@ -273,8 +287,8 @@ volumes:
                 or Settings → Apps → App store → ⋮ → Repositories → add
                 <code>https://github.com/open-parcels/open-parcels-ha-apps</code>.
               </li>
-              <li>Install <strong>Open Parcels</strong>, start it and open it from the sidebar.</li>
-              <li>Add the integration below; Home Assistant reaches the app without opening port 3000.</li>
+              <li>Install <strong>Open Parcels</strong>, start it and open <strong>Parcels</strong> in the sidebar; choose the admin password (no setup code needed there).</li>
+              <li>Install the integration below; Home Assistant then offers it under Settings → Devices &amp; services, already connected to the app. Port 3000 stays closed.</li>
             </ol>
           </article>
           <article class="panel card">
@@ -294,15 +308,15 @@ volumes:
         <div class="grid">
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels">
             <h3>open-parcels</h3>
-            <p>The server and web UI: carrier plug-ins, mail parsing, scheduler, event stream, Docker image and Unraid template.</p>
+            <p>The server and web UI: carrier providers, email parsing, scheduler, live events, Docker image and Unraid template.</p>
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-rules">
             <h3>open-parcels-rules</h3>
-            <p>Shared knowledge: tracking-number formats, carrier status tables, delivery-date phrases and shipping-mail rules, with a TypeScript engine.</p>
+            <p>Shared knowledge: tracking-number formats, carrier status tables, expected-delivery phrases and shipping-email rules, with a TypeScript engine.</p>
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha">
             <h3>open-parcels-ha</h3>
-            <p>The Home Assistant integration: a device per source, an entity per parcel, live updates over the event stream.</p>
+            <p>The Home Assistant integration: a device per connection, an entity per parcel, live updates over the server's live events.</p>
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha-apps">
             <h3>open-parcels-ha-apps</h3>
