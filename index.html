@@ -82,7 +82,15 @@
           </article>
           <article class="panel card">
             <h3>Shipping emails</h3>
-            <p>Watches your inbox over IMAP IDLE and recognises shipping and order emails with community-maintained rules.</p>
+            <p>Watches your inbox over IMAP IDLE and recognises shipping and order emails with community-maintained rules. Order confirmations start an order with its items and total; later emails move it on and file their tracking numbers under it.</p>
+          </article>
+          <article class="panel card">
+            <h3>Fallback services</h3>
+            <p>For parcels no built-in carrier follows or finds, add a universal-lookup service by its address or 17TRACK with your own API key. Both are optional, paced and asked only about those parcels.</p>
+          </article>
+          <article class="panel card">
+            <h3>Easy to add connections</h3>
+            <p>"Add a connection" opens a searchable picker with provider logos and countries, in English or German. The whole web UI follows your browser's language.</p>
           </article>
           <article class="panel card">
             <h3>Live courier map</h3>
@@ -90,7 +98,7 @@
           </article>
           <article class="panel card">
             <h3>Delivery calendar</h3>
-            <p>Expected deliveries in a calendar view and as an ICS feed for any calendar app.</p>
+            <p>Expected deliveries in a calendar view and as an ICS feed for any calendar.</p>
           </article>
           <article class="panel card">
             <h3>Home Assistant</h3>
@@ -105,16 +113,24 @@
             <p>Nothing is deleted on its own. The Data page shows what is stored and lets you clear a connection, old or archived parcels, caches, or everything (with a backup first). Disabled connections hide their parcels until you enable them again.</p>
           </article>
           <article class="panel card">
+            <h3>Backups and status</h3>
+            <p>A daily database backup (keeps the newest 7, changeable under Settings → Backups) with a restore tool. The Status page shows every connection, inbox, the scheduler and the last backup.</p>
+          </article>
+          <article class="panel card">
             <h3>Private by default</h3>
             <p>Separate reader and admin passwords, strict security headers, no analytics. Place lookups on OpenStreetMap can be switched off (<code>OPENPARCELS_GEOCODING=false</code>).</p>
           </article>
           <article class="panel card">
             <h3>Built-in Tailscale</h3>
-            <p>Set <code>TS_STATE_DIR</code> and the image joins your tailnet and serves the web UI over HTTPS on <code>https://&lt;name&gt;.&lt;tailnet&gt;.ts.net</code>, without a sidecar container.</p>
+            <p>Set <code>TS_STATE_DIR</code> and the server joins your tailnet and serves the web UI over HTTPS on <code>https://&lt;name&gt;.&lt;tailnet&gt;.ts.net</code>, without a sidecar container. Tailscale is downloaded on that first start (checksum-verified), so the image stays small for everyone else.</p>
           </article>
           <article class="panel card">
             <h3>Runs anywhere</h3>
-            <p>One multi-arch image (amd64, arm64) for Docker and Unraid, and a prebuilt Home Assistant app for amd64 and Raspberry Pi. Read-only root, non-root user.</p>
+            <p>One multi-arch image (amd64, arm64; about 280 MB) for Docker and Unraid, and a prebuilt Home Assistant app for amd64 and Raspberry Pi. Read-only root, non-root user.</p>
+          </article>
+          <article class="panel card">
+            <h3>Planned</h3>
+            <p>Notifications through consumers (ntfy, email, webhook, Apprise), client libraries and an Android app. These are plans, not shipped yet.</p>
           </article>
         </div>
       </section>
@@ -259,7 +275,7 @@ volumes:
               <li>Run <code>docker compose up -d</code>.</li>
               <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
               <li>Open <code>http://localhost:3000</code>, enter the code and choose the admin password. Set a reader password too (<code>OPENPARCELS_PASSWORD</code>, or Settings → Security): without one, anyone who can reach the server can read every parcel and order.</li>
-              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released). The same image is on GitHub's registry as <code>ghcr.io/bluscream/open-parcels:dev</code>.</li>
+              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released).</li>
             </ol>
           </article>
           <article class="panel card">
@@ -283,12 +299,12 @@ volumes:
             </p>
             <ol>
               <li>
-                <a href="https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fopen-parcels%2Fopen-parcels-ha-apps">Add the app repository to Home Assistant</a>,
+                <a href="https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fopen-parcels%2Fopen-parcels-ha-apps">Add the HA app repository to Home Assistant</a>,
                 or Settings → Apps → App store → ⋮ → Repositories → add
                 <code>https://github.com/open-parcels/open-parcels-ha-apps</code>.
               </li>
               <li>Install <strong>Open Parcels</strong>, start it and open <strong>Parcels</strong> in the sidebar; choose the admin password (no setup code needed there).</li>
-              <li>Install the integration below; Home Assistant then offers it under Settings → Devices &amp; services, already connected to the app. Port 3000 stays closed.</li>
+              <li>Install the integration below; Home Assistant then offers it under Settings → Devices &amp; services, already connected to the HA app. Port 3000 stays closed.</li>
             </ol>
           </article>
           <article class="panel card">
@@ -308,7 +324,7 @@ volumes:
         <div class="grid">
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels">
             <h3>open-parcels</h3>
-            <p>The server and web UI: carrier providers, email parsing, scheduler, live events, Docker image and Unraid template.</p>
+            <p>The server and web UI: providers, email parsing, backups, scheduler, live events, Docker image and Unraid template.</p>
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-rules">
             <h3>open-parcels-rules</h3>
@@ -320,11 +336,11 @@ volumes:
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-ha-apps">
             <h3>open-parcels-ha-apps</h3>
-            <p>The Home Assistant app (add-on): runs the server and web UI inside Home Assistant.</p>
+            <p>The HA app (Home Assistant app, formerly an add-on): runs the server and web UI inside Home Assistant.</p>
           </a>
           <a class="panel card link" href="https://github.com/open-parcels/open-parcels-extension">
             <h3>open-parcels-extension</h3>
-            <p>The browser extension for carrier sign-ins that end on an app address the web UI cannot catch itself.</p>
+            <p>The browser extension for carrier sign-ins that end on a carrier's phone-app address (such as <code>dhllogin://</code>), which the web UI cannot catch itself.</p>
           </a>
         </div>
       </section>
