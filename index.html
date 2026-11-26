@@ -276,6 +276,7 @@ volumes:
               <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
               <li>Open <code>http://localhost:3000</code>, enter the code and choose the admin password. Set a reader password too (<code>OPENPARCELS_PASSWORD</code>, or Settings → Security): without one, anyone who can reach the server can read every parcel and order.</li>
               <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released).</li>
+              <li>The image comes from Docker Hub. If Docker Hub has problems (an outage or its pull limit), use the mirror on GHCR with the same tags: <code>ghcr.io/open-parcels/open-parcels:dev</code>.</li>
             </ol>
           </article>
           <article class="panel card">
@@ -289,6 +290,7 @@ volumes:
               <li>Docker → Add container → pick <strong>open-parcels</strong>, check the port and the <code>/data</code> path, Apply.</li>
               <li>The data folder must be writable for uid 1000 (<code>chown 1000:1000</code>), or append <code>--user 99:100</code> to the existing Extra Parameters (keep the flags that are already there).</li>
               <li>Read the setup code from the container log and open the web UI.</li>
+              <li>If Docker Hub has problems, set Repository to the GHCR mirror, <code>ghcr.io/open-parcels/open-parcels</code> with the same tag.</li>
             </ol>
           </article>
           <article class="panel card">
