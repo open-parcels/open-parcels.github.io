@@ -63,7 +63,7 @@
           <a class="btn primary" href="#install">Get started</a>
           <a class="btn" href="https://github.com/open-parcels/open-parcels">View on GitHub</a>
         </p>
-        <p class="badge">Early development · 2.0.0-dev</p>
+        <p class="badge">Version 2.0.0</p>
         <p class="stats">
           <a href="https://hub.docker.com/r/bluscream1/open-parcels"><img alt="Docker Hub pulls" src="https://img.shields.io/docker/pulls/bluscream1/open-parcels?logo=docker&amp;label=pulls" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
           <a href="https://github.com/open-parcels/open-parcels/stargazers"><img alt="Server stars" src="https://img.shields.io/github/stars/open-parcels/open-parcels?label=stars&amp;style=flat" height="20" loading="lazy" referrerpolicy="no-referrer" /></a>
@@ -252,7 +252,7 @@
             <h3>Docker Compose</h3>
             <pre><code>services:
   open-parcels:
-    image: bluscream1/open-parcels:dev
+    image: bluscream1/open-parcels:latest
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -275,8 +275,8 @@ volumes:
               <li>Run <code>docker compose up -d</code>.</li>
               <li>Read the one-time setup code with <code>docker compose logs open-parcels</code>.</li>
               <li>Open <code>http://localhost:3000</code>, enter the code and choose the admin password. Set a reader password too (<code>OPENPARCELS_PASSWORD</code>, or Settings → Security): without one, anyone who can reach the server can read every parcel and order.</li>
-              <li>Version 2 is published as <code>:dev</code> for amd64 and arm64 (<code>:latest</code> is still version 1 until 2.0.0 is released).</li>
-              <li>The image comes from Docker Hub. If Docker Hub has problems (an outage or its pull limit), use the mirror on GHCR with the same tags: <code>ghcr.io/open-parcels/open-parcels:dev</code>.</li>
+              <li>Images for amd64 and arm64: <code>:latest</code> follows the releases, <code>:2.0</code> the 2.0 releases, <code>:2.0.0</code> stays on that release, <code>:dev</code> is the newest development build. Coming from version 1? Its database is not read on its own: see <a href="https://github.com/open-parcels/open-parcels#migrating">Migrating</a> in the README.</li>
+              <li>The image comes from Docker Hub. If Docker Hub has problems (an outage or its pull limit), use the mirror on GHCR with the same tags: <code>ghcr.io/open-parcels/open-parcels:latest</code>.</li>
             </ol>
           </article>
           <article class="panel card">
